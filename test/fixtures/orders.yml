@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ItemID: 1
+  CustomerID: 1
+  UserID: 1
+  InternationalShippingFee: 9.99
+  DomesticShippingFee: 9.99
+  ExchangeRate: 9.99
+  Price: 9.99
+  From: 
+  Status: 
+  Refund: 9.99
+  CompletedDate: 2017-01-28
+
+two:
+  ItemID: 1
+  CustomerID: 1
+  UserID: 1
+  InternationalShippingFee: 9.99
+  DomesticShippingFee: 9.99
+  ExchangeRate: 9.99
+  Price: 9.99
+  From: 
+  Status: 
+  Refund: 9.99
+  CompletedDate: 2017-01-28
