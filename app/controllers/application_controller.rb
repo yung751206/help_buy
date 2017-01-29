@@ -2,8 +2,7 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
+  SITE_NAME = "美國代購by娜塔莉"
 
-  def hello
-  	render html: "Hello World!"
-  end
+  
 end
