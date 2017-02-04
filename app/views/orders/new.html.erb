@@ -41,32 +41,32 @@
  				<label>賣場:</label>
  				<br/>
 		    <%= f.radio_button :From, Order.description_to_from(Order::FACEBOOK) %> 
-  			<%= label :FromFacebook, Order::FACEBOOK %>
+  			<%= f.label :FromFacebook, Order::FACEBOOK %>
   			&nbsp;
   			<%= f.radio_button :From, Order.description_to_from(Order::PTT) %>
-  			<%= label :FromPTT, Order::PTT %>
+  			<%= f.label :FromPTT, Order::PTT %>
   			&nbsp;
   			<%= f.radio_button :From, Order.description_to_from(Order::SHOP_EE) %>
-  			<%= label :FromPTT, Order::SHOP_EE %>
+  			<%= f.label :FromPTT, Order::SHOP_EE %>
 			</fieldset>
 
    		<fieldset class="col-sm-12">
  				<label>狀態:</label>
  				<br/>
 		    <%= f.radio_button :Status, 'Ordered' %> 
-  			<%= label :Ordered, '已下訂' %>
+  			<%= f.label :Ordered, '已下訂' %>
   			&nbsp;
   			<%= f.radio_button :Status, 'ArrivedUS' %>
-  			<%= label :ArrivedUS, '已到貨' %>
+  			<%= f.label :ArrivedUS, '已到貨' %>
   			&nbsp;
   			<%= f.radio_button :Status, 'Shipped' %>
-  			<%= label :Shipped, '已寄台灣' %>
+  			<%= f.label :Shipped, '已寄台灣' %>
   			&nbsp;
   			<%= f.radio_button :Status, 'WaitConfirmed' %>
-  			<%= label :WaitConfirmed, '等確認' %>  			
+  			<%= f.label :WaitConfirmed, '等確認' %>  			
   			&nbsp;
   			<%= f.radio_button :Status, 'Completed' %>
-  			<%= label :Completed, '完成' %>	
+  			<%= f.label :Completed, '完成' %>	
 			</fieldset>
 
       <br/>
