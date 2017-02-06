@@ -1,1 +1,38 @@
-<%= @order.id %>, <%= @order.ItemID %>
+<div class="container jumbotron">
+	<h1>Order Information</h1>
+	<div class="row">
+		<div class="col-md-4">Order ID: <%=@order.id %></div>
+		<div class="col-md-4">Item ID: <%=@order.ItemID %></div>
+		<div class="col-md-4">Customer ID: <%=@order.CustomerID %></div>
+	</div>
+	<div class="row">
+		<div class="col-md-4">User ID: <%=@order.UserID %></div>
+		<div class="col-md-4">International shipping fee:  <%=@order.InternationalShippingFee %></div>
+		<div class="col-md-4">Domestic Shipping Fee: <%=@order.DomesticShippingFee %></div>
+	</div>
+	<div class="row">
+		<div class="col-md-4">Exchange Rate: <%=@order.ExchangeRate %></div>
+		<div class="col-md-4">Price:  <%=@order.Price %></div>
+		<div class="col-md-4">From: <%=Order.from_to_description @order.From %></div>
+	</div>
+	<div class="row">
+		<div class="col-md-4">Status: <%=Order.order_status_to_description @order.Status %></div>
+		<div class="col-md-4">Refund:  <%=@order.Refund %></div>
+		<div class="col-md-4">Completed Date: <%=@order.CompletedDate %></div>
+	</div>
+	<div class="row">
+		<div class="col-md-4">Created at: <%=@order.created_at %></div>
+		<div class="col-md-4">Updated at:  <%=@order.updated_at %></div>
+	</div>
+	<br/>
+	<div class="row">		
+		<div class="col-md-4">
+		<%= link_to "Edit Order", edit_order_path(@order), class: "btn btn-primary center" %>
+		</div>
+	</div>
+</div>
+
+
+
+
+
