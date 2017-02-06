@@ -1,4 +1,9 @@
 class OrdersController < ApplicationController
+
+	def index
+		@orders = Order.paginate(page: params[:page])
+	end
+
 	def show
 		@order = Order.find(params[:id])
 	end
