@@ -12,6 +12,12 @@ class OrdersController < ApplicationController
   	@order = Order.new
   end
 
+  def destroy
+  	Order.find(params[:id]).destroy
+  	flash[:success] = "Order deleted"
+  	redirect_to orders_url
+  end
+
   def create
     @order = Order.new(order_params)
     if @order.save

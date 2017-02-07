@@ -9,6 +9,7 @@
 				<th>Price</th>
 				<th>From</th>
 				<th>Status</th>
+				<th></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -18,6 +19,7 @@
 					<td><%=order.Price %></td>
 					<td><%=Order.from_to_description order.From %></td>
 					<td><%=Order.order_status_to_description order.Status %></td>
+					<td><%= link_to 'Delete', order, method: :delete, data:{ confirm: "Are you sure?" } %>
 				</tr>
 			<% end %>
 		</tbody>
