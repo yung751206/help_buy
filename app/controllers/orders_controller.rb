@@ -46,6 +46,8 @@ class OrdersController < ApplicationController
   	def order_params
       params.require(:order).permit(:InternationalShippingFee, 
       	:DomesticShippingFee, :ExchangeRate, :Price, 
-      	:From, :Status, :Refund, :CompletedDate)
+      	:From, :Status, :Refund, :CompletedDate, :CustomerFirstName,
+      	:CustomerLastName, :CustomerPhone, :CustomerAddress, :Brand,
+      	:Cost, :Description)
     end
 end
