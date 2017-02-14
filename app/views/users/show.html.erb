@@ -1,15 +1,21 @@
-<% provide(:title, "All Orders") %>
-<div class="container">
-	<h1>All Orders</h1>
+<% provide(:title, "User Info") %>
+<div class="container jumbotron">
+	<h1>User Information</h1>
+	<div class="row">
+		<div class="col-md-4">User ID: <%=@user.id %></div>
+		<div class="col-md-4">Login: <%=@user.login %></div>
+		<div class="col-md-4">Email: <%=@user.email %></div>
+	</div>
 
+	<br/>
+	
 	<table class="table table-hover">
 		<thead>
 			<tr>
 				<th>Order ID</th>
 				<th>Price</th>
-				<th>From</th>				
+				<th>From</th>
 				<th>Status</th>
-				<th>User ID</th>
 				<th></th>
 			</tr>
 		</thead>
@@ -20,11 +26,15 @@
 					<td><%=order.Price %></td>
 					<td><%=Order.from_to_description order.From %></td>
 					<td><%=Order.order_status_to_description order.Status %></td>
-					<td><%=link_to order.user.login, user_path(order.user.id) %></td>
 					<td><%= link_to 'Delete', order, method: :delete, data:{ confirm: "Are you sure?" } %>
 				</tr>
 			<% end %>
 		</tbody>
 	</table>
-	<%= will_paginate %>
+
+	<div class="row">		
+		<div class="col-md-4">
+			<%= link_to "Edit User", '#', class: "btn btn-primary" %>
+		</div>
+	</div>
 </div>

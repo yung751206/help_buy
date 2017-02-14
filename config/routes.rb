@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   get  '/contact', to: 'static_pages#contact'
   get  '/new_order',  to: 'orders#new'
   resources :orders
+  resources :users
 end
