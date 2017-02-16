@@ -11,29 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170212232705) do
+ActiveRecord::Schema.define(version: 20170215071311) do
 
   create_table "orders", force: :cascade do |t|
-    t.integer  "ItemID"
-    t.integer  "CustomerID"
-    t.decimal  "InternationalShippingFee"
-    t.decimal  "DomesticShippingFee"
-    t.decimal  "ExchangeRate"
-    t.decimal  "Price"
-    t.integer  "From"
-    t.integer  "Status"
-    t.decimal  "Refund"
-    t.date     "CompletedDate"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
-    t.string   "CustomerFirstName"
-    t.string   "CustomerLastName"
-    t.string   "CustomerPhone"
-    t.string   "CustomerAddress"
-    t.string   "Brand"
-    t.decimal  "Cost"
-    t.string   "Description"
+    t.decimal  "international_shipping_fee"
+    t.decimal  "domestic_shipping_fee"
+    t.decimal  "exchange_rate"
+    t.decimal  "price"
+    t.integer  "from"
+    t.integer  "status"
+    t.decimal  "refund"
+    t.date     "completed_date"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.string   "customer_first_name"
+    t.string   "customer_last_name"
+    t.string   "customer_phone"
+    t.string   "customer_address"
+    t.string   "brand"
+    t.decimal  "cost"
+    t.string   "description"
     t.integer  "user_id"
+    t.integer  "where"
   end
 
   add_index "orders", ["user_id"], name: "index_orders_on_user_id"

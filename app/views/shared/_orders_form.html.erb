@@ -5,30 +5,30 @@
       <%= render 'shared/error_messages' %>   
       <div class="row">
     		<div class="col-sm-3">
-      		<%= f.label :InternationalShippingFee, "國際運費" %>
-      		<%= f.number_field :InternationalShippingFee, :step => 0.01 %>
+      		<%= f.label :international_shipping_fee, "國際運費" %>
+      		<%= f.number_field :international_shipping_fee, :step => 0.01 %>
       	</div>
         <div class="col-sm-3">
-       	 	<%= f.label :DomesticShippingFee, "國內運費" %>
-        	<%= f.number_field :DomesticShippingFee, :step => 0.01 %>
+       	 	<%= f.label :domestic_shipping_fee, "國內運費" %>
+        	<%= f.number_field :domestic_shipping_fee, :step => 0.01 %>
        	 </div>
   			<div class="col-sm-3">
-       	 <%= f.label :ExchangeRate, "匯率" %>
-       	 <%= f.number_field :ExchangeRate, :step => 0.01 %>
+       	 <%= f.label :exchange_rate, "匯率" %>
+       	 <%= f.number_field :exchange_rate, :step => 0.01 %>
   			</div>
   			<div class="col-sm-3">
-        	<%= f.label :Price, "售價" %>
-        	<%= f.number_field :Price, :step => 0.01%>
+        	<%= f.label :price, "售價" %>
+        	<%= f.number_field :price, :step => 0.01%>
         </div>
       </div>
       <div class="row">
     		<div class="col-sm-3">
-      		<%= f.label :Refund, "餘額" %>
-      		<%= f.number_field :Refund, :step => 0.01 %>
+      		<%= f.label :refund, "餘額" %>
+      		<%= f.number_field :refund, :step => 0.01 %>
       	</div>
         <div class="col-sm-3">
-       	 	<%= f.label :CompletedDate, "完成日期" %>
-        	<%= f.date_field :CompletedDate %>
+       	 	<%= f.label :completed_date, "完成日期" %>
+        	<%= f.date_field :completed_date %>
        	</div>	
       </div>
 
@@ -36,14 +36,14 @@
      		<div class="col-sm-12">
    				<label>賣場:</label>
    				<br/>
-  		    <%= f.radio_button :From, Order.description_to_from(Order::FACEBOOK) %> 
-    			<%= f.label :FromFacebook, Order::FACEBOOK %>
+  		    <%= f.radio_button :from, Order.description_to_from(Order::FACEBOOK) %> 
+    			<%= f.label :from_facebook, Order::FACEBOOK %>
     			&nbsp;
-    			<%= f.radio_button :From, Order.description_to_from(Order::PTT) %>
-    			<%= f.label :FromPTT, Order::PTT %>
+    			<%= f.radio_button :from, Order.description_to_from(Order::PTT) %>
+    			<%= f.label :from_ptt, Order::PTT %>
     			&nbsp;
-    			<%= f.radio_button :From, Order.description_to_from(Order::SHOP_EE) %>
-    			<%= f.label :FromPTT, Order::SHOP_EE %>
+    			<%= f.radio_button :from, Order.description_to_from(Order::SHOPEE) %>
+    			<%= f.label :from_shopee, Order::SHOPEE %>
   			</div>
       </div>
 
@@ -51,20 +51,20 @@
      		<div class="col-sm-12">
    				<label>狀態:</label>
    				<br/>
-  		    <%= f.radio_button :Status, Order.description_to_order_status(Order::ORDERED) %> 
-    			<%= f.label :Ordered, '已下訂' %>
+  		    <%= f.radio_button :status, Order.description_to_order_status(Order::ORDERED) %> 
+    			<%= f.label :ordered, '已下訂' %>
     			&nbsp;
-    			<%= f.radio_button :Status, Order.description_to_order_status(Order::ARRIVED_US) %>
-    			<%= f.label :ArrivedUS, '已到貨' %>
+    			<%= f.radio_button :status, Order.description_to_order_status(Order::ARRIVED_US) %>
+    			<%= f.label :arrived_us, '已到貨' %>
     			&nbsp;
-    			<%= f.radio_button :Status, Order.description_to_order_status(Order::SHIPPED) %>
-    			<%= f.label :Shipped, '已寄台灣' %>
+    			<%= f.radio_button :status, Order.description_to_order_status(Order::SHIPPED) %>
+    			<%= f.label :shipped, '已寄台灣' %>
     			&nbsp;
-    			<%= f.radio_button :Status, Order.description_to_order_status(Order::WAIT_CONFIRMED) %>
-    			<%= f.label :WaitConfirmed, '等確認' %>  			
+    			<%= f.radio_button :status, Order.description_to_order_status(Order::WAIT_CONFIRMED) %>
+    			<%= f.label :wait_confirmed, '等確認' %>  			
     			&nbsp;
-    			<%= f.radio_button :Status, Order.description_to_order_status(Order::COMPLETED) %>
-    			<%= f.label :Completed, '完成' %>	
+    			<%= f.radio_button :status, Order.description_to_order_status(Order::COMPLETED) %>
+    			<%= f.label :completed, '完成' %>	
   			</div>
       </div>
 
@@ -72,39 +72,39 @@
       
       <div class="row">
         <div class="col-sm-4">
-          <%= f.label :CustomerFirstName, "First Name" %>
-          <%= f.text_field :CustomerFirstName%>
+          <%= f.label :customer_first_name, "First Name" %>
+          <%= f.text_field :customer_first_name%>
         </div>
          <div class="col-sm-4">
-          <%= f.label :CustomerLastName, "Last Name" %>
-          <%= f.text_field :CustomerLastName%>
+          <%= f.label :customer_last_name, "Last Name" %>
+          <%= f.text_field :customer_last_name%>
         </div>
         <div class="col-sm-4">
-          <%= f.label :CustomerPhone, "Phone Number" %>
-          <%= f.text_field :CustomerPhone%>
+          <%= f.label :customer_phone, "Phone Number" %>
+          <%= f.text_field :customer_phone%>
         </div>
       </div>
 
       <div class="row">
         <div class="col-sm-12">
-          <%= f.label :CustomerAddress, "Address" %>
-          <%= f.text_field :CustomerAddress%>
+          <%= f.label :customer_address, "Address" %>
+          <%= f.text_field :customer_address%>
         </div>
       </div>
 
       <h3>Item:</h3>
       <div class="row">
         <div class="col-sm-3">
-          <%= f.label :Brand, "Brand" %>
-          <%= f.text_field :Brand%>
+          <%= f.label :brand, "Brand" %>
+          <%= f.text_field :brand%>
         </div>
         <div class="col-sm-3">
-          <%= f.label :Cost, "成本" %>
-          <%= f.number_field :Cost, :step => 0.01%>
+          <%= f.label :cost, "成本" %>
+          <%= f.number_field :cost, :step => 0.01%>
         </div>        
         <div class="col-sm-6">
-          <%= f.label :Description, "描述" %>
-          <%= f.text_field :Description %>
+          <%= f.label :description, "描述" %>
+          <%= f.text_field :description %>
         </div>
       </div>
 

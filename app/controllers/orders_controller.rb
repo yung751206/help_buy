@@ -61,11 +61,11 @@ class OrdersController < ApplicationController
 
   private
   	def order_params
-      params.require(:order).permit(:InternationalShippingFee, 
-      	:DomesticShippingFee, :ExchangeRate, :Price, 
-      	:From, :Status, :Refund, :CompletedDate, :CustomerFirstName,
-      	:CustomerLastName, :CustomerPhone, :CustomerAddress, :Brand,
-      	:Cost, :Description)
+      params.require(:order).permit(:international_shipping_fee, 
+      	:domestic_shipping_fee, :exchange_rate, :price, 
+      	:from, :status, :refund, :completed_date, :customer_first_name,
+      	:customer_last_name, :customer_phone, :customer_address, :brand,
+      	:cost, :description)
     end
 
     def user_params

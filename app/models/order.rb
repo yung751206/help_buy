@@ -5,7 +5,7 @@ class Order < ActiveRecord::Base
 
 	FACEBOOK = 'Facebook'
 	PTT = 'PTT'
-	SHOP_EE = 'Shopee'
+	SHOPEE = 'Shopee'
 	ORDERED = 'Ordered'
 	ARRIVED_US = 'Arrived US'
 	SHIPPED = 'Shipped'
@@ -13,13 +13,28 @@ class Order < ActiveRecord::Base
 	COMPLETED = 'Completed'
 	UNKNOWN = 'Unknown'
 
+	def self.able_to_calculate_revenue(order)
+		if(order.cost == nil || order.price == nil || 
+			order.international_shipping_fee == nil || 
+			order.domestic_shipping_fee == nil || 
+			order.exchange_rate == nil )
+			false
+		else
+			true
+		end
+	end
+
+	def self.calculate_revenue(order)
+		(order.price - (order.cost + order.international_shipping_fee)*order.exchange_rate - order.domestic_shipping_fee)
+	end
+
 	def self.description_to_from(from)
 		case from
 			when FACEBOOK
 				1
 			when PTT
 				2
-			when SHOP_EE
+			when SHOPEE
 				3
 			else
 				0
