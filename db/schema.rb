@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170220184028) do
+ActiveRecord::Schema.define(version: 20170220194536) do
 
   create_table "orders", force: :cascade do |t|
     t.decimal  "international_shipping_fee"
@@ -24,10 +24,6 @@ ActiveRecord::Schema.define(version: 20170220184028) do
     t.date     "completed_date"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
-    t.string   "customer_first_name"
-    t.string   "customer_last_name"
-    t.string   "customer_phone"
-    t.string   "customer_address"
     t.string   "brand"
     t.decimal  "cost"
     t.string   "description"
@@ -41,8 +37,12 @@ ActiveRecord::Schema.define(version: 20170220184028) do
   create_table "users", force: :cascade do |t|
     t.string   "login"
     t.string   "email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.string   "customer_address"
+    t.string   "customer_phone"
+    t.string   "customer_last_name"
+    t.string   "customer_first_name"
   end
 
 end

@@ -101,23 +101,23 @@
       
       <div class="row">
         <div class="col-sm-4">
-          <%= f.label :customer_first_name, "First Name" %>
-          <%= f.text_field :customer_first_name%>
+          <%=label_tag 'First Name' %>
+          <%=text_field :user, :customer_first_name%>   
         </div>
          <div class="col-sm-4">
-          <%= f.label :customer_last_name, "Last Name" %>
-          <%= f.text_field :customer_last_name%>
+          <%=label_tag 'Last Name' %>
+          <%=text_field :user, :customer_last_name%>
         </div>
         <div class="col-sm-4">
-          <%= f.label :customer_phone, "Phone Number" %>
-          <%= f.text_field :customer_phone%>
+          <%=label_tag 'Phone Number' %>
+          <%=text_field :user, :customer_phone%>        
         </div>
       </div>
 
       <div class="row">
         <div class="col-sm-12">
-          <%= f.label :customer_address, "Address" %>
-          <%= f.text_field :customer_address%>
+          <%=label_tag 'Address' %>
+          <%=text_field :user, :customer_address%>        
         </div>
       </div>      
 

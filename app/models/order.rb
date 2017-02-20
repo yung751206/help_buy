@@ -57,7 +57,7 @@ class Order < ActiveRecord::Base
 			when 2
 				PTT
 			when 3
-				SHOP_EE
+				SHOPEE
 			else
 				UNKNOWN
 			end

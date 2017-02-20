@@ -35,6 +35,12 @@ class OrdersController < ApplicationController
     		render 'new'
         return 
     	end
+    else
+      update_hash = check_update_hash(params[:user])
+      if !@user.update_attributes(update_hash)
+        render 'new'
+        return
+      end
     end
 
     # associate an order with user
@@ -77,13 +83,22 @@ class OrdersController < ApplicationController
   	def order_params
       params.require(:order).permit(:international_shipping_fee, 
       	:domestic_shipping_fee, :exchange_rate, :price, 
-      	:origin, :status, :refund, :completed_date, :customer_first_name,
-      	:customer_last_name, :customer_phone, :customer_address, :brand,
-      	:cost, :description, :revenue)
+      	:origin, :status, :refund, :completed_date,
+      	:brand, :cost, :description, :revenue)
     end
 
     def user_params
-    	params.require(:user).permit(:login, :email)
+    	params.require(:user).permit(:login, :email, :customer_address,
+        :customer_phone, :customer_first_name, :customer_last_name)
+    end
+
+    def check_update_hash(user_params)
+      result = {}
+      result[:customer_first_name] = user_params[:customer_first_name] if user_params[:customer_first_name].present?
+      result[:customer_last_name] = user_params[:customer_last_name] if user_params[:customer_last_name].present?
+      result[:customer_address] = user_params[:customer_address] if user_params[:customer_address].present?
+      result[:customer_phone] = user_params[:customer_phone] if user_params[:customer_phone].present?
+      return result
     end
 
     def sort_column
