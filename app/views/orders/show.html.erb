@@ -1,9 +1,5 @@
 <div class="container jumbotron">
 	<h1>Order Information</h1>
-	<div class="row">
-		<div class="col-md-4">Order ID: <%=@order.id %></div>
-		<div class="col-md-4">User ID: <%=@order.user.id %></div>	
-	</div>
 	<div class="row">	
 		<div class="col-md-4">International shipping fee:  <%=@order.international_shipping_fee %></div>
 		<div class="col-md-4">Domestic Shipping Fee: <%=@order.domestic_shipping_fee %></div>
@@ -11,7 +7,7 @@
 	<div class="row">
 		<div class="col-md-4">Exchange Rate: <%=@order.exchange_rate %></div>
 		<div class="col-md-4">Price:  <%=@order.price %></div>
-		<div class="col-md-4">From: <%=Order.from_to_description @order.from %></div>
+		<div class="col-md-4">Origin: <%=Order.from_to_description @order.origin %></div>
 	</div>
 	<div class="row">
 		<div class="col-md-4">Status: <%=Order.order_status_to_description @order.status %></div>

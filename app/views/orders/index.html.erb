@@ -5,30 +5,24 @@
 	<table class="table table-hover">
 		<thead>
 			<tr>
-				<th>Order ID</th>
-				<th>Price</th>
-				<th>From</th>				
-				<th>Status</th>
 				<th>Content</th>
-				<th>Revenue</th>
-				<th>User</th>
+				<th><%= sortable "login", "User" %></th>				
+				<th><%= sortable "price" %></th>
+				<th><%= sortable "revenue" %></th>  
+				<th><%= sortable "status" %></th>
+				<th><%= sortable "origin" %></th>								
 				<th></th>
 			</tr>
 		</thead>
 		<tbody>
 			<% @orders.each do |order| %>
 				<tr>
-					<td><%=link_to order.id, order_path(order) %></td>
+					<td><%=link_to (order.brand + " " + order.description), order_path(order) %>					
+					<td><%=link_to order.user.login, user_path(order.user.id) %></td>					
 					<td><%=order.price %></td>
-					<td><%=Order.from_to_description order.from %></td>
-					<td><%=Order.order_status_to_description order.status %></td>
-					<td><%=order.brand + " " + order.description %>					
-					<% if Order.able_to_calculate_revenue order %>
-						<td><%= Order.calculate_revenue order %></td>
-					<% else %>
-						<td></td>
-					<% end %>
-					<td><%=link_to order.user.login, user_path(order.user.id) %></td>
+					<td><%=order.revenue %></td>
+					<td><%=Order.order_status_to_description order.status %></td>										
+					<td><%=Order.from_to_description order.origin %></td>
 					<td><%= link_to 'Delete', order, method: :delete, data:{ confirm: "Are you sure?" } %>
 				</tr>
 			<% end %>

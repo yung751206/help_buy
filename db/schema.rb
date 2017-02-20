@@ -11,14 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170215071311) do
+ActiveRecord::Schema.define(version: 20170220184028) do
 
   create_table "orders", force: :cascade do |t|
     t.decimal  "international_shipping_fee"
     t.decimal  "domestic_shipping_fee"
     t.decimal  "exchange_rate"
     t.decimal  "price"
-    t.integer  "from"
+    t.integer  "origin"
     t.integer  "status"
     t.decimal  "refund"
     t.date     "completed_date"
@@ -32,9 +32,10 @@ ActiveRecord::Schema.define(version: 20170215071311) do
     t.decimal  "cost"
     t.string   "description"
     t.integer  "user_id"
-    t.integer  "where"
+    t.decimal  "revenue"
   end
 
+  add_index "orders", ["revenue"], name: "index_orders_on_revenue"
   add_index "orders", ["user_id"], name: "index_orders_on_user_id"
 
   create_table "users", force: :cascade do |t|

@@ -1,6 +1,5 @@
 class Order < ActiveRecord::Base
 	belongs_to :user
-	default_scope -> { order(updated_at: :desc) }
   validates :user_id, presence: true
 
 	FACEBOOK = 'Facebook'
@@ -14,7 +13,13 @@ class Order < ActiveRecord::Base
 	UNKNOWN = 'Unknown'
 
 	def self.able_to_calculate_revenue(order)
-		if(order.cost == nil || order.price == nil || 
+		if order.class == ActionController::Parameters
+			(order[:cost] == nil || order[:price] == nil || 
+			order[:international_shipping_fee] == nil || 
+			order[:domestic_shipping_fee] == nil || 
+			order[:exchange_rate] == nil )
+			true			
+		elsif(order.cost == nil || order.price == nil || 
 			order.international_shipping_fee == nil || 
 			order.domestic_shipping_fee == nil || 
 			order.exchange_rate == nil )
@@ -25,11 +30,15 @@ class Order < ActiveRecord::Base
 	end
 
 	def self.calculate_revenue(order)
-		(order.price - (order.cost + order.international_shipping_fee)*order.exchange_rate - order.domestic_shipping_fee)
+		if order.class == ActionController::Parameters
+			(order[:price].to_d - (order[:cost].to_d + order[:international_shipping_fee].to_d)*order[:exchange_rate].to_d - order[:domestic_shipping_fee].to_d)
+		else
+			(order.price - (order.cost + order.international_shipping_fee)*order.exchange_rate - order.domestic_shipping_fee)
+		end
 	end
 
-	def self.description_to_from(from)
-		case from
+	def self.description_to_from(origin)
+		case origin
 			when FACEBOOK
 				1
 			when PTT
@@ -41,8 +50,8 @@ class Order < ActiveRecord::Base
 			end
 	end
 
-	def self.from_to_description(from)
-		case from
+	def self.from_to_description(origin)
+		case origin
 			when 1
 				FACEBOOK
 			when 2

@@ -5,18 +5,14 @@
 	<table class="table table-hover">
 		<thead>
 			<tr>
-				<th>User ID</th>
-				<th>Login</th>
-				<th>Email</th>		
+				<th>Login</th>		
 				<th></th>		
 			</tr>
 		</thead>
 		<tbody>
 			<% @users.each do |user| %>
 				<tr>
-					<td><%=link_to user.id, user_path(user) %></td>
-					<td><%=user.login %></td>
-					<td><%=user.email %></td>
+					<td><%=link_to user.login, user_path(user)%></td>
 					<td><%= link_to 'Delete', user, method: :delete, data:{ confirm: "Are you sure?" } %>
 				</tr>
 			<% end %>

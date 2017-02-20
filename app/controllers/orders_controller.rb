@@ -1,7 +1,12 @@
 class OrdersController < ApplicationController
+  helper_method :sort_column, :sort_direction
 
 	def index
-		@orders = Order.paginate(page: params[:page])
+    if(sort_column == "login")
+      @orders = Order.includes(:user).order("users.login " + sort_direction).paginate(page: params[:page])      
+    else
+  		@orders = Order.order(sort_column + " " + sort_direction).paginate(page: params[:page])
+    end
 	end
 
 	def show
@@ -34,6 +39,10 @@ class OrdersController < ApplicationController
 
     # associate an order with user
     @order = @user.orders.create(order_params)
+    if Order.able_to_calculate_revenue @order
+      @order.revenue = Order.calculate_revenue(@order)
+    end
+
     if @order.save
     	flash[:success] = "Create a new order successfully."
     	redirect_to @order
@@ -51,6 +60,11 @@ class OrdersController < ApplicationController
   def update
   	@order = Order.find(params[:id])
     @user = @order.user
+
+    if Order.able_to_calculate_revenue params[:order]
+      params[:order][:revenue] = Order.calculate_revenue(params[:order]).to_s
+    end
+
   	if (@order.update_attributes(order_params) && @user.update_attributes(user_params))
   		flash[:success] = "Order updated"
   		redirect_to @order
@@ -63,12 +77,20 @@ class OrdersController < ApplicationController
   	def order_params
       params.require(:order).permit(:international_shipping_fee, 
       	:domestic_shipping_fee, :exchange_rate, :price, 
-      	:from, :status, :refund, :completed_date, :customer_first_name,
+      	:origin, :status, :refund, :completed_date, :customer_first_name,
       	:customer_last_name, :customer_phone, :customer_address, :brand,
-      	:cost, :description)
+      	:cost, :description, :revenue)
     end
 
     def user_params
     	params.require(:user).permit(:login, :email)
     end
+
+    def sort_column
+      Order.column_names.include?(params[:sort]) || User.column_names.include?(params[:sort]) ? params[:sort] : "id"
+    end
+    
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+    end     
 end
