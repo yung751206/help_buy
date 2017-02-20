@@ -8,6 +8,7 @@
 				<th>Login</th>
 				<th>Full Name</th>
 				<th>Address</th>
+				<th>Phone</th>
 				<th></th>		
 			</tr>
 		</thead>
@@ -21,6 +22,7 @@
 						<td></td>
 					<% end %>
 					<td><%=user.customer_address %></td>
+					<td><%=user.customer_phone %></td>
 					<td><%= link_to 'Delete', user, method: :delete, data:{ confirm: "Are you sure?" } %>
 				</tr>
 			<% end %>
