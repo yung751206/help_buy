@@ -2,31 +2,20 @@
 <div class="container">
 	<h1>All Orders</h1>
 
-	<table class="table table-hover">
-		<thead>
-			<tr>
-				<th>Content</th>
-				<th><%= sortable "login", "User" %></th>				
-				<th><%= sortable "price" %></th>
-				<th><%= sortable "revenue" %></th>  
-				<th><%= sortable "status" %></th>
-				<th><%= sortable "origin" %></th>								
-				<th></th>
-			</tr>
-		</thead>
-		<tbody>
-			<% @orders.each do |order| %>
-				<tr>
-					<td><%=link_to (order.brand + " " + order.description), order_path(order) %>					
-					<td><%=link_to order.user.login, user_path(order.user.id) %></td>					
-					<td><%=order.price %></td>
-					<td><%=order.revenue %></td>
-					<td><%=Order.order_status_to_description order.status %></td>										
-					<td><%=Order.from_to_description order.origin %></td>
-					<td><%= link_to 'Delete', order, method: :delete, data:{ confirm: "Are you sure?" } %>
-				</tr>
-			<% end %>
-		</tbody>
-	</table>
-	<%= will_paginate %>
+	<%= form_tag orders_path, :method => 'get', :id => "orders_search" do %>
+	  <p>
+	  	<div class="row">
+	  		<div class="col-sm-2">
+	    		<%= text_field_tag :search, params[:search], class: "form-control" %>
+    		</div>
+	    	<div class="col-sm-1">
+	    		<%= submit_tag "Search", :name => nil, class: "btn btn-primary" %>
+    		</div>
+	    </div>
+	    <div id="orders">
+	    	<%= render '/orders/orders' %>
+	    </div>
+	  </p>
+	<% end %>
+
 </div>

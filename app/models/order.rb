@@ -12,6 +12,14 @@ class Order < ActiveRecord::Base
 	COMPLETED = 'Completed'
 	UNKNOWN = 'Unknown'
 
+	def self.search(search)
+		if search
+			where("brand LIKE '%#{search}%' OR description LIKE '%#{search}%'")
+		else 
+			all
+		end
+	end
+
 	def self.able_to_calculate_revenue(order)
 		if order.class == ActionController::Parameters
 			(order[:cost] == nil || order[:price] == nil || 

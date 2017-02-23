@@ -3,9 +3,9 @@ class OrdersController < ApplicationController
 
 	def index
     if(sort_column == "login")
-      @orders = Order.includes(:user).order("users.login " + sort_direction).paginate(page: params[:page])      
+      @orders = Order.includes(:user).search(params[:search]).order("users.login " + sort_direction).paginate(per_page: 15, page: params[:page])
     else
-  		@orders = Order.order(sort_column + " " + sort_direction).paginate(page: params[:page])
+  		@orders = Order.search(params[:search]).order(sort_column + " " + sort_direction).paginate(per_page: 15, page: params[:page])
     end
 	end
 
